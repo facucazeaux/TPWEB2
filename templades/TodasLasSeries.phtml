@@ -1,0 +1,24 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="templades/caja.css">
+</head>
+
+
+<body>
+
+<h1 class="titulo">todas las series</h1>
+
+<div class="series-list">
+    <?php foreach ($series as $i): ?>
+        <div class="caja"> <!-- Cambié "caja.css" a "caja" -->
+            <ul>
+                <h1><?php echo $i->nombre; ?></h1>
+                <li>Temporadas: <?php echo $i->temporadas; ?></li>
+                <button class="boton-ver-mas">
+                    <a href="router.php?action=series/ver/<?php echo urlencode($i->nombre); ?>">Ver más</a>
+                </button>
+
+
+        </div>
+    <?php endforeach; ?>
+</div>
+</body>

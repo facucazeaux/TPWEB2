@@ -1,0 +1,47 @@
+/* caja.css */
+
+.series-list {
+    background-color:grey;
+}
+
+h1{
+    font-size: 150%;
+}
+
+
+.titulo {
+    font-size: 3em; 
+    color: #e24a4a;
+    text-align: center; 
+    margin: 20px 0; 
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+body{
+    background-color: rgb(255, 255, 255);
+}
+
+
+
+.boton-ver-mas {
+    background-color: rgb(231, 0, 0); 
+    color: rgb(0, 0, 0); 
+    border: none; 
+    padding: 15px 20px;
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block;
+    font-size: 16px; 
+    margin: 10px 2px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    transition: background-color 0.3s, transform 0.2s; 
+}
+
+.boton-ver-mas:hover {
+    background-color: #dfdfdf; 
+    transform: scale(1.05); 
+}
+
+
