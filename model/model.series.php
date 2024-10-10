@@ -29,6 +29,26 @@
                 }
                 
 
+            public function getCategorias()
+                {
+                    $query = $this->db->prepare('SELECT * FROM genero');
+                    $query->execute();
+                    $genero = $query->fetchAll(PDO::FETCH_OBJ);
+                    return $genero;
+                }
+
+                public function getSeriesPorGenero($id_genero)
+                {
+                    // Consulta SQL para obtener solo las series que coincidan con el id_genero
+                    $query = $this->db->prepare('SELECT * FROM serie WHERE id_genero = ?');
+                    $query->execute([$id_genero]);
+                    $series = $query->fetchAll(PDO::FETCH_OBJ);
+                    return $series;
+                }
+                
+
+           
+
         }
 
 
