@@ -1,0 +1,35 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="templades/caja.css">
+</head>
+
+<body>
+    <div class="series-list">
+        
+        <?php if (!empty($series)): ?>
+            <?php foreach ($series as $i): ?>
+                <div class="caja">
+                    <ul>
+                        <h1><?php echo htmlspecialchars($i->nombre); ?></h1>
+                        <li>Temporadas: <?php echo htmlspecialchars($i->temporadas); ?></li>
+                        <li>Categoría:
+                            <?php
+                                $nombreGenero = 'Desconocido';
+                                foreach ($genero as $generos) {
+                                    if ($i->id_genero == $generos->id_genero) {
+                                        $nombreGenero = $generos->genero;
+                                    }
+                                }
+                            ?>
+                            <?php echo htmlspecialchars($nombreGenero); ?>
+                        </li>
+                        <button class="boton-ver-mas">
+                            <a href="series/ver/<?php echo urlencode($i->nombre); ?>">Ver más</a>
+                        </button>
+                    </ul>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No hay series disponibles para este género.</p>
+        <?php endif; ?>
+    </div>
+</body>

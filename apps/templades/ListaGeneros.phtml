@@ -1,0 +1,18 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="templades/caja.css">
+</head>
+
+<body>
+    <div>
+        <h1>Géneros</h1> <!-- Mueve el encabezado fuera del bucle -->
+        <ul>
+            <?php foreach ($genero as $i): ?>
+                <li>
+                    <a href="generos/ListaGeneros/<?php echo $i->id_genero; ?>">
+                        <?php echo $i->genero; ?> <!-- Muestra el nombre del género -->
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</body>

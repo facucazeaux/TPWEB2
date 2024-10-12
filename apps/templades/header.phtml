@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="<?php echo BASE_URL ?>">
+    <title></title>
+    <link rel="stylesheet" href="apps/templades/styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Series</h1>
+            <nav>
+                <ul>
+                    <li><a href="generos/ListaGeneros">Inicio</a></li>
+                    <li><a href="series/TodasLasSeries">Series</a></li>
+                    
+                    <!-- Botón de Login -->
+                    <?php if (!isset($_SESSION['ID_USER'])): ?>
+                        <li><a href="login">Login</a></li>
+                    <?php else: ?>
+                        <!-- Botón de Cerrar Sesión -->
+                        <li><a href="cerrar_session.php">Cerrar sesión</a></li>
+                    <?php endif; ?>
+                </ul>
+            </nav>
+        </div>
+        <div>
+            <?php if($this->user): ?>
+            <span>Usuario : <?= $this->user->user?></span>
+            <?php endif?>
+        </div>
+    </header>
+
+</body>
+</html>
