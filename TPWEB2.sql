@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-09-2024 a las 20:10:36
+-- Tiempo de generación: 12-10-2024 a las 22:55:55
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -70,6 +70,25 @@ INSERT INTO `serie` (`id`, `nombre`, `temporadas`, `protagonistas`, `director`, 
 (4, 'El verano en que me enamoré', 2, 'Lola Tung, Jackie Chung, Rachel Blanchard, Christopher Briney, Gavin Casalegno, Sean Kaufman, Alfredo Narciso, Minnie Mills, Colin Ferguson, Tom Everett Scott, Rain Spencer, JP Lambert, Summer Madison, David Iacono, Sarah Hudson, Rea DeRosa, Al Vicen', 'Jesse Peretz, Jeff Chan, Erica Dunton', '+18', 'Belly Conklin está por cumplir 16 años y va a su lugar favorito en el mundo, la playa de Cousins, para pasar el verano con su familia y los Fisher. Belly ha crecido mucho durante el último año y siente que este verano será diferente a los anteriores. El verano en que me enamoré está basado en el libro de Jenny Han, quien es la creadora y productora ejecutiva.', 12),
 (5, 'El hipnotizador ', 2, 'Leonardo Sbaraglia, Chico Díaz, César Troncoso, Marilú Marini, Juliana Didone, Bianca Comparato, Chino Darín, Christiana Ubach y Delfi Galbiati', 'Alex Gabasi y José Eduardo Belmonte', '+16', 'Un hipnotizador condenado a un insomnio eterno que se dedica a adormecer a la gente y desenterrar sus recuerdos perdidos.', 13);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `user` varchar(250) NOT NULL,
+  `password` char(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `user`, `password`) VALUES
+(6, 'webadmin', '$2y$10$Et51bjvH6ClrWQj7dPNjTeKAB7GtQHNS5OXYJuS.9nluLQ3/7XOJ.');
+
 --
 -- Índices para tablas volcadas
 --
@@ -88,6 +107,13 @@ ALTER TABLE `serie`
   ADD KEY `serie` (`id_genero`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user` (`user`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -102,6 +128,12 @@ ALTER TABLE `genero`
 --
 ALTER TABLE `serie`
   MODIFY `id` int(45) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
