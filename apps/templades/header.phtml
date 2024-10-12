@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="<?php echo BASE_URL ?>">
     <title></title>
-    <link rel="stylesheet" href="apps/templades/styles.css">
+    <link rel="stylesheet" href="apps/Css/styles.css">
+    <link rel="stylesheet" type="text/css" href="apps/Css/caja.css">
 </head>
 <body>
 
@@ -19,10 +20,10 @@
                     
                     <!-- Botón de Login -->
                     <?php if (!isset($_SESSION['ID_USER'])): ?>
-                        <li><a href="login">Login</a></li>
+                        <li ><a href="login">Login</a></li>
                     <?php else: ?>
                         <!-- Botón de Cerrar Sesión -->
-                        <li><a href="cerrar_session.php">Cerrar sesión</a></li>
+                        <li><a href="logout">Cerrar sesión</a></li>
                     <?php endif; ?>
                 </ul>
             </nav>

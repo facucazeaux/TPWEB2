@@ -3,6 +3,7 @@
 require_once 'apps/view/view.auth.php';
 require_once 'apps/model/model.user.php';
 
+
     class AuthController
         {
             private $model;
@@ -52,13 +53,26 @@ require_once 'apps/model/model.user.php';
                             
                             $_SESSION['LAST_ACTIVITY'] = time();
                             
-                            return $this->view->ShowLogin('Contraseña correcta loquito');
+                            
+                            header('Location: '.BASE_URL);
+                            
                         } else {
                             return $this->view->ShowLogin('Contraseña incorrecta');
                         }
 
 
         }
+
+
+        public function logout()
+            
+            {   
+                session_start();
+                session_destroy();
+
+                header('Location: '.BASE_URL.'login');
+                exit();
+            }
     
         }
 ?>

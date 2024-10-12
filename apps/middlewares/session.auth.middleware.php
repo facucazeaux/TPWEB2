@@ -12,7 +12,7 @@
             return ;
         }
        else
-        header('Location : '.BASE_URL . 'login');
+        header('Location: '.BASE_URL . 'login');
         die();
        }
 
