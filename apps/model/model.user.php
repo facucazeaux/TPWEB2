@@ -4,11 +4,35 @@
 
         
         {
-            private $db;
+            protected $db;
 
             public function __construct()
             {
                 $this->db = new PDO ('mysql:host=localhost;'.'dbname=serie;charset=utf8', 'root', '');
+                try {
+                    $this->db = new PDO('mysql:host=localhost;'.'dbname=serie;charset=utf8', 'root', '');
+                    $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $this->_deploy();
+                } catch (PDOException $e) {
+                   
+                    echo "Error de conexión: " . $e->getMessage();
+                }
+            }
+        
+        
+            private function _deploy()
+            {
+                $query = $this->db->query('SHOW TABLES LIKE "usuario"');
+                $tables = $query->fetchAll();
+                if (count($tables) == 0) {
+                    $contraseña = password_hash('admin', PASSWORD_DEFAULT);
+                    $sql = <<<END
+                                CREATE TABLE `usuario` (`id` int(11) NOT NULL,`user` varchar(250) NOT NULL,`password` char(60) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                                INSERT INTO `usuario` (`id`, `user`, `password`) VALUES(6, 'webadmin', $contraseña');
+        
+                        END;
+                    $this->db->query($sql);
+                }
             }
 
 

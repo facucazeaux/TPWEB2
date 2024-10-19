@@ -1,0 +1,28 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="apps/Css/caja.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>apps/Css/formulario.css"> <!-- Ruta hacia tu CSS -->
+    <title>Agregar Nueva Serie</title>
+</head>
+<body>
+
+<h1>Agregar Nueva Serie</h1>
+<div class="form-container">
+<form action="<?= BASE_URL . 'generos/AgregarGenero' ?>" method="POST">
+    <label for="nombre">Nombre de el Genero:</label>
+    <input type="text" id="genero" name="genero" required><br><br>
+
+    <label for="descripcion">Descripcion:</label><br>
+    <textarea id="descripcion" name="descripcion" required></textarea><br><br>
+
+
+    <input type="submit"  class="boton-ver-mas" value="Agregar Genero">
+</form>
+</div>
+</body>
+</html>

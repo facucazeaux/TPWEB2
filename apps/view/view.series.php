@@ -24,23 +24,30 @@
                 }
                 
 
-
-                public function VerTodosLosGeneros($genero)
+                public function ver_agregarSerie($generos)
                 {
-                    include'apps/templades/header.phtml';
-                    include'apps/templades/ListaGeneros.phtml';
+                    
+                    include 'apps/templades/header.phtml';
+                    include 'apps/templades/Agregar_serie.phtml';
                     include 'apps/templades/footer.phtml';
                 }
 
 
-                public function VerSeriesPorGenero($genero,$series)
+                public function eliminarserie($id_serie_eliminar,$res)
                 {
-                    include'apps/templades/header.phtml';
-                    include'apps/templades/seriesPorGenero.phtml';
+                    include 'apps/templades/header.phtml';
+                    include 'apps/templades/TodasLasSeries.phtml';
                     include 'apps/templades/footer.phtml';
-                }
                 
-
+                }
+               
+                
+                public function ver_editarSerie($serie,$genero)
+                    {
+                        include 'apps/templades/header.phtml';
+                        include 'apps/templades/formulario_editarSerie.phtml';
+                        include 'apps/templades/footer.phtml';
+                    }
 
             
             

@@ -1,17 +1,42 @@
+
+<?php
+
+
+// Verifico si el usuario está logueado
+$loggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'];
+
+?>
+
 <head>
     <link rel="stylesheet" type="text/css" href="apps/Css/styles.css">
     <link rel="stylesheet" type="text/css" href="apps/Css/caja.css">
 </head>
 
 <body>
+
+
     <div>
         <ul>
-            <h1><?php echo $serie->nombre; ?></h1> 
-            <li>Temporadas: <?php echo $serie->temporadas; ?></li> 
-            <li>Protagonistas: <?php echo $serie->protagonistas; ?></li> 
-            <li>Director: <?php echo $serie->director; ?></li> 
-            <li>Calificación por Edad: <?php echo $serie->CalificacionPorEdad; ?></li> 
+            <h1><?php echo $serie->nombre; ?></h1>
+            <li>Temporadas: <?php echo $serie->temporadas; ?></li>
+            <li>Protagonistas: <?php echo $serie->protagonistas; ?></li>
+            <li>Director: <?php echo $serie->director; ?></li>
+            <li>Calificación por Edad: <?php echo $serie->CalificacionPorEdad; ?></li>
             <li>Resumen: <?php echo $serie->resumen; ?></li>
-        </ul>
+            <li>id: <?php echo $serie->id; ?></li>
+           
     </div>
+
+
+    <?php if (isset($_SESSION['USER_USER'])): ?>
+                        <!-- Botón de Eliminar -->
+                        <form action="<?php echo BASE_URL; ?>series/EliminarSerie/<?php echo $serie->id ?>" method="get" style="display:inline;">
+                            <button type="submit" class="boton-ver-mas">Eliminar</button>
+                        </form>
+
+                        <!-- Botón de Editar -->
+                        <form action="<?php echo BASE_URL; ?>series/EditarSerie/<?php echo $serie->id ?>" method="get" style="display:inline;">
+                            <button type="submit" class="boton-ver-mas">Editar</button>
+                        </form>
+                    <?php endif; ?>
 </body>

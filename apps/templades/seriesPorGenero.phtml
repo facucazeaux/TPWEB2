@@ -5,24 +5,22 @@
 
 <body>
     <div class="series-list">
-        
+        <?php               
+                    $nombreGenero = $genero->genero;
+                    $descripcionGenero = $genero->descripcion;
+            
+        ?>
+
+        <h1>Descripción del Género</h1>
+        <p><?php echo htmlspecialchars($descripcionGenero); ?></p>
+
         <?php if (!empty($series)): ?>
             <?php foreach ($series as $i): ?>
                 <div class="caja">
                     <ul>
                         <h1><?php echo htmlspecialchars($i->nombre); ?></h1>
                         <li>Temporadas: <?php echo htmlspecialchars($i->temporadas); ?></li>
-                        <li>Categoría:
-                            <?php
-                                $nombreGenero = 'Desconocido';
-                                foreach ($genero as $generos) {
-                                    if ($i->id_genero == $generos->id_genero) {
-                                        $nombreGenero = $generos->genero;
-                                    }
-                                }
-                            ?>
-                            <?php echo htmlspecialchars($nombreGenero); ?>
-                        </li>
+                        <li>Categoría: <?php echo htmlspecialchars($nombreGenero); ?></li>
                         <button class="boton-ver-mas">
                             <a href="series/ver/<?php echo urlencode($i->nombre); ?>">Ver más</a>
                         </button>

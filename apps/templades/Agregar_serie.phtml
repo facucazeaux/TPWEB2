@@ -1,0 +1,52 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="apps/Css/caja.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>apps/Css/formulario.css"> <!-- Ruta hacia tu CSS -->
+    <title>Agregar Nueva Serie</title>
+</head>
+<body>
+
+<h1>Agregar Nueva Serie</h1>
+<div class="form-container">
+<form action="<?= BASE_URL . 'series/AgregarSerie' ?>" method="POST">
+    <label for="nombre">Nombre de la Serie:</label>
+    <input type="text" id="nombre" name="nombre" required><br><br>
+
+    <label for="temporadas">Número de Temporadas:</label>
+    <input type="number" id="temporadas" name="temporadas" required><br><br>
+
+    <label for="protagonistas">Protagonistas:</label>
+    <input type="text" id="protagonistas" name="protagonistas" required><br><br>
+
+    <label for="director">Director:</label>
+    <input type="text" id="director" name="director" required><br><br>
+
+    <label for="calificacionPorEdad">Calificación por Edad:</label>
+    <input type="number" id="calificacionPorEdad" name="calificacionPorEdad" required><br><br>
+
+    <label for="resumen">Resumen:</label><br>
+    <textarea id="resumen" name="resumen" required></textarea><br><br>
+
+    <label for="genero">Género:</label>
+<select id="genero" name="genero" required>
+    <option value="" disabled selected>Seleccione un género</option>
+    <?php if (isset($generos) && !empty($generos)): ?>
+        <?php foreach ($generos as $genero): ?>
+            <option value="<?= htmlspecialchars($genero->id_genero) ?>"><?= htmlspecialchars($genero->genero) ?></option>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <option value="" disabled>No hay géneros disponibles</option>
+    <?php endif; ?>
+</select><br><br>
+
+
+    <input type="submit" class="boton-ver-mas" value="Agregar Serie">
+</form>
+</div>
+</body>
+</html>

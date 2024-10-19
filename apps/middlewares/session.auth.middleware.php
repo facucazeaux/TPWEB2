@@ -1,20 +1,25 @@
 <?php
 
-    function sessionAuthMiddleware($res) //response
+    function sessionAuthMiddleware($res, $requireLogin=true)
     {
 
         session_start();
-        if (isset($_SESSION['ID_USER']))
+
+        if ($requireLogin)
         {
-            $res->user = new stdClass();
-            $res->user->id = $_SESSION['ID_USER'];
-            $res->user->user = $_SESSION['USER_USER'];
-            return ;
+            if (isset($_SESSION['ID_USER']))
+            {
+                $res->user = new stdClass();
+                $res->user->id = $_SESSION['ID_USER'];
+                $res->user->user =(String) $_SESSION['USER_USER'];
+                return ;
+            }
+           else
+            header('Location: '.BASE_URL . 'login');
+            die();
+           }
         }
-       else
-        header('Location: '.BASE_URL . 'login');
-        die();
-       }
+       
 
     
 

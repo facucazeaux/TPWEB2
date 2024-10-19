@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Serie</title>
+    <link rel="stylesheet" type="text/css" href="apps/Css/caja.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>apps/Css/formulario.css"> <!-- Ruta hacia tu CSS -->
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Editar Serie</h1>
+
+
+
+
+        <form action="<?= BASE_URL . 'series/EditarSerie/' . $serie->id ?>" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" value="<?= htmlspecialchars($serie->nombre) ?>" required>
+
+            <label for="temporadas">Temporadas:</label>
+            <input type="number" id="temporadas" name="temporadas" value="<?= htmlspecialchars($serie->temporadas) ?>">
+
+            <label for="protagonistas">Protagonistas:</label>
+            <input type="text" id="protagonistas" name="protagonistas" value="<?= htmlspecialchars($serie->protagonistas) ?>">
+
+            <label for="director">Director:</label>
+            <input type="text" id="director" name="director" value="<?= htmlspecialchars($serie->director) ?>">
+
+            <label for="calificacionPorEdad">Calificación por Edad:</label>
+            <input type="text" id="calificacionPorEdad" name="calificacionPorEdad" value="<?= htmlspecialchars($serie->CalificacionPorEdad) ?>">
+
+            <label for="resumen">Resumen:</label>
+            <textarea id="resumen" name="resumen"><?= htmlspecialchars($serie->resumen) ?></textarea>
+
+
+
+
+            <label for="genero">Género:</label>
+            <select id="genero" name="genero" required>
+                <?php foreach ($genero as $g): ?>
+                    <option value="<?= $g->id_genero ?>" <?= $g->id_genero == $serie->id_genero ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($g->genero) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+
+
+
+
+
+            <button type="submit"  class="boton-ver-mas">Guardar cambios</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

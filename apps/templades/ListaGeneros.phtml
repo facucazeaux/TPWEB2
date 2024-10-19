@@ -4,16 +4,58 @@
 </head>
 
 <body>
+    <?php
+
+
+    // verifico si el usuario está logueado
+    $loggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'];
+
+
+    ?>
     <div>
-        <h1>Géneros</h1> <!-- Mueve el encabezado fuera del bucle -->
+        <h1>Generos</h1>
+
+        <?php if (isset($_SESSION['USER_USER'])): ?>
+            <!-- Botón Agregar -->
+            <form action="<?php echo BASE_URL; ?>generos/AgregarGenero" method="get" style="display:inline;">
+                <button type="submit" class="boton-ver-mas">Agregar Genero</button>
+            </form>
+        <?php endif; ?>
+
+
+            
         <ul>
             <?php foreach ($genero as $i): ?>
                 <li>
                     <a class="genero-link" href="generos/ListaGeneros/<?php echo $i->id_genero; ?>">
-                        <?php echo $i->genero; ?> <!-- Muestra el nombre del género -->
+                        <?php echo $i->genero; ?>
                     </a>
                 </li>
+
+
+
+                <?php if (isset($_SESSION['USER_USER'])): ?>
+                    <!-- Boton editar genero  -->
+                    <form action="<?php echo BASE_URL; ?>generos/EditarGenero/<?php echo  $i->id_genero ?>" method="get" style="display:inline;">
+                        <button type="submit" class="boton2">Editar Genero</button>
+                    </form>
+                <?php endif; ?>
+
+                <?php if (isset($_SESSION['USER_USER'])): ?>
+                    <!-- Boton editar genero  -->
+                    <form action="<?php echo BASE_URL; ?>generos/EliminarGenero/<?php echo  $i->id_genero ?>" method="get" style="display:inline;">
+                        <button type="submit" class="boton2">Eliminar Genero</button>
+                    </form>
+                <?php endif; ?>
+
+
+                    
+            
             <?php endforeach; ?>
+
+
+
+            
         </ul>
     </div>
 </body>

@@ -9,6 +9,12 @@
     <link rel="stylesheet" type="text/css" href="apps/Css/caja.css">
 </head>
 <body>
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 
     <header>
         <div class="container">
@@ -16,22 +22,24 @@
             <nav>
                 <ul>
                     <li><a href="generos/ListaGeneros">Inicio</a></li>
-                    <li><a href="series/TodasLasSeries">Series</a></li>
+                    <li><a href="series/ListaDeSeries">Series</a></li>
                     
-                    <!-- Botón de Login -->
-                    <?php if (!isset($_SESSION['ID_USER'])): ?>
-                        <li ><a href="login">Login</a></li>
-                    <?php else: ?>
-                        <!-- Botón de Cerrar Sesión -->
+                    
+                    <?php if (isset($_SESSION['USER_USER'])): ?>
                         <li><a href="logout">Cerrar sesión</a></li>
+                        <?php else: ?>
+                        <li ><a href="login">Login</a></li>
                     <?php endif; ?>
+
                 </ul>
             </nav>
         </div>
         <div>
-            <?php if($this->user): ?>
-            <span>Usuario : <?= $this->user->user?></span>
-            <?php endif?>
+            
+        <?php if (isset($_SESSION['USER_USER'])): ?>
+    <span>Usuario : <?= $_SESSION['USER_USER'] ?></span>
+<?php endif; ?>
+
         </div>
     </header>
 

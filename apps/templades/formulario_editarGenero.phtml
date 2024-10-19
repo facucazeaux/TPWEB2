@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Serie</title>
+    <link rel="stylesheet" type="text/css" href="apps/Css/caja.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>apps/Css/formulario.css"> <!-- Ruta hacia tu CSS -->
+</head>
+<body>
+    <div class="form-container">
+        <h1>Editar Genero</h1>
+        
+        <form action="<?php echo BASE_URL; ?>generos/EditarGenero/<?php echo $genero->id_genero; ?>" method="post">
+    <input type="hidden" name="id_genero" value="<?php echo $genero->id_genero; ?>">
+    <label for="genero">Género:</label>
+    <input type="text" name="genero" value="<?php echo $genero->genero; ?>" required>
+    
+    <label for="descripcion">Descripción:</label>
+    <textarea name="descripcion" required><?php echo $genero->descripcion; ?></textarea>
+    
+    <button type="submit"  class="boton-ver-mas">Actualizar Género</button>
+</form>
+
+    </div>
+    
+</body>
+</html>

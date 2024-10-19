@@ -1,6 +1,14 @@
 <?php require_once 'apps/templades/header.phtml'?>
 
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="apps/Css/caja.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>apps/Css/formulario.css"> <!-- Ruta hacia tu CSS -->
+    <title>Agregar Nueva Serie</title>
+</head>
 
        <?php if ($error):?>
             <div>
@@ -9,7 +17,7 @@
         <?php endif ?>
 
 
-
+        <div class="form-container">
     <form action="" method="post">
 
         <div>
@@ -25,5 +33,5 @@
             <button class="boton-ver-mas" type="submit">Login</button>
 
     </form>
-
+</div>
 <?php require_once 'apps/templades/footer.phtml'?>

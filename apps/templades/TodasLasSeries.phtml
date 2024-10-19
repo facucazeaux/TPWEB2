@@ -1,32 +1,57 @@
+<?php
+
+
+// Verifica si el usuario está logueado
+$loggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'];
+
+
+?>
+
 <head>
     <link rel="stylesheet" type="text/css" href="apps/Css/styles.css">
     <link rel="stylesheet" type="text/css" href="apps/Css/caja.css">
 </head>
 
 <body>
+
+
+
     <div class="series-list">
-        
+
+        <?php if (isset($_SESSION['USER_USER'])): ?>
+               <!-- Botón Agregar -->
+            <form action="<?php echo BASE_URL; ?>series/AgregarSerie" method="get" style="display:inline;">
+                <button type="submit" class="boton-ver-mas">Agregar Serie</button>
+            </form>
+        <?php endif; ?>
+
         <?php foreach ($series as $i): ?>
-            <div class="caja"> <!-- Cambié "caja.css" a "caja" -->
+            <div class="caja">
                 <ul>
                     <h1><?php echo htmlspecialchars($i->nombre); ?></h1>
                     <li>Temporadas: <?php echo htmlspecialchars($i->temporadas); ?></li>
                     <li>Categoría:
                         <?php
-                            
-                            $nombreGenero = 'Desconocida';
-                            foreach ($genero as $generos) {
-                                if ($i->id_genero == $generos->id_genero) {
-                                    $nombreGenero = $generos->genero; 
-                                    break; 
-                                }
+                        $nombreGenero = 'Desconocida';
+                        foreach ($genero as $generos) {
+                            if ($i->id_genero == $generos->id_genero) {
+                                $nombreGenero = $generos->genero;
+                                break;
                             }
-                            echo htmlspecialchars($nombreGenero);
+                        }
+                        echo htmlspecialchars($nombreGenero);
                         ?>
                     </li>
                     <button class="boton-ver-mas">
                         <a href="series/ver/<?php echo urlencode($i->nombre); ?>">Ver más</a>
                     </button>
+
+                    
+                   
+
+
+
+
                 </ul>
             </div>
         <?php endforeach; ?>
