@@ -11,8 +11,8 @@
             {
                 $this->db = new PDO('mysql:host=localhost;'.'dbname=serie;charset=utf8', 'root', '');
                 try {
-                    $this->db = new PDO('mysql:host=localhost;'.'dbname=serie;charset=utf8', 'root', '');
-                    $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $this->db = new PDO( "mysql:host=".MYSQL_HOST .";dbname=".MYSQL_DB.";charset=utf8",MYSQL_USER, MYSQL_PASS);
+                    
                     $this->_deploy();
                 } catch (PDOException $e) {
                     // Manejo de errores en la conexión
