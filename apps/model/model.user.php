@@ -8,11 +8,9 @@
 
             public function __construct()
             {
-                $this->db = new PDO('mysql:host=localhost;'.'dbname=serie;charset=utf8', 'root', '');
-                
                 try {
-                    $this->db = new PDO( "mysql:host=".MYSQL_HOST .";dbname=".MYSQL_DB.";charset=utf8",MYSQL_USER, MYSQL_PASS);
-                    
+                    $this->db = new PDO('mysql:host=localhost;'.'dbname=serie;charset=utf8', 'root', '');
+                  
                     $this->_deploy();
                 } catch (PDOException $e) {
                    
