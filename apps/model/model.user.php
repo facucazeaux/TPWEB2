@@ -1,5 +1,5 @@
 <?php
-
+require_once 'config.php';
     class ModelUser
 
         
@@ -9,7 +9,11 @@
             public function __construct()
             {
                 try {
-                    $this->db = new PDO('mysql:host=localhost;'.'dbname=serie;charset=utf8', 'root', '');
+                    $this->db = new PDO(
+                        "mysql:host=".MYSQL_HOST .
+                        ";dbname=".MYSQL_DB.";charset=utf8", 
+                        MYSQL_USER, MYSQL_PASS);
+                        
                   
                     $this->_deploy();
                 } catch (PDOException $e) {
